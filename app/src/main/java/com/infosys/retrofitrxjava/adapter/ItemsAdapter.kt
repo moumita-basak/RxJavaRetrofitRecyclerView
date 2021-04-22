@@ -1,4 +1,4 @@
-package com.infosys.retrofitrxjava.Adapter
+package com.infosys.retrofitrxjava.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -9,13 +9,11 @@ import android.widget.TextView
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-
 import com.infosys.retrofitrxjava.R
 import com.infosys.retrofitrxjava.modelnew.ItemRow
 
-
-class CustomAdapter(private val mContext: Context, private var itemsList: MutableList<ItemRow>) :
-    RecyclerView.Adapter<CustomAdapter.MyViewHolder>() {
+class ItemsAdapter(private val mContext: Context, private var dataList: MutableList<ItemRow>) :
+    RecyclerView.Adapter<ItemsAdapter.MyViewHolder>() {
     inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var item_title: TextView = view.findViewById(R.id.item_title)
         var item_description: TextView = view.findViewById(R.id.item_description)
@@ -29,7 +27,7 @@ class CustomAdapter(private val mContext: Context, private var itemsList: Mutabl
         return MyViewHolder(itemView)
     }
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = itemsList[position]
+        val item = dataList[position]
         val title = item.title
         val description = item.description
         val image = item.imageHref
@@ -49,12 +47,8 @@ class CustomAdapter(private val mContext: Context, private var itemsList: Mutabl
             ex.printStackTrace()
         }
 
-
     }
     override fun getItemCount(): Int {
-        return itemsList.size
+        return dataList.size
     }
-
-
-
 }

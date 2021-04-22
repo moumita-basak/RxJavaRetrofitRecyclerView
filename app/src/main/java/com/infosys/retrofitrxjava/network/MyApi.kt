@@ -1,15 +1,15 @@
 package com.infosys.retrofitrxjava.network
 
 import com.google.gson.JsonObject
+import com.infosys.retrofitrxjava.modelnew.ItemRow
+import com.infosys.retrofitrxjava.modelnew.Items
 import com.infosys.retrofitrxjava.util.CommonConstants
+import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.FieldMap
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 import java.util.concurrent.TimeUnit
 
 interface MyApi {
@@ -18,6 +18,10 @@ interface MyApi {
 suspend fun getItems(
     @FieldMap params: HashMap<String, String>
 ) : Response<JsonObject>
+
+    @GET("s/2iodh4vg0eortkl/facts.json")
+    fun getItemData() : Observable<Items>
+
 
 companion object{
     operator fun invoke(

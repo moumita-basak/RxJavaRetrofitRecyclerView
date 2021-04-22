@@ -8,12 +8,11 @@ import com.google.gson.annotations.SerializedName
 
 data class ItemRow(
     @SerializedName("title")
-    val title: String,
+    val title: Any,
     @SerializedName("description")
-    val description: String,
+    val description: Any,
     @SerializedName("imageHref")
-    val imageHref: String
-//    val imageHref: Int
+    val imageHref: Any
 
     )
 
